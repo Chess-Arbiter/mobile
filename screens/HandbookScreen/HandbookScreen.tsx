@@ -1,12 +1,6 @@
-import { Card, Button } from "react-native-paper";
+import * as React from "react";
+import { WebView } from "react-native-webview";
 
 export default function HandbookScreen() {
-  return (
-    <Card>
-      <Card.Actions>
-        <Button>Cancel</Button>
-        <Button>Ok</Button>
-      </Card.Actions>
-    </Card>
-  );
+  return <WebView source={{ uri: "https://expo.dev" }} />;
 }
