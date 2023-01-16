@@ -14,8 +14,9 @@ const useInitApp = () => {
   function changeSettings(key: string, value: string) {
     setSettings({ ...settings, [key]: value });
     if (key === "lang") {
-      _onLanguageChange(value as ELANGUAGES);
+      return _onLanguageChange(value as ELANGUAGES);
     }
+    updateOrCreateSetting(key, value);
   }
 
   async function _onLanguageChange(value: ELANGUAGES) {

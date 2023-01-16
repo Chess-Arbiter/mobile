@@ -7,7 +7,6 @@ import useCachedResources from "./hooks/useCachedResources";
 import useColorScheme from "./hooks/useColorScheme";
 import Navigation from "./navigation";
 import { Provider as PaperProvider } from "react-native-paper";
-import theme from "./theme/theme";
 import useInitApp from "./hooks/useInitApp";
 import i18 from "./i18";
 import DetectLanguage from "./DetectLanguage";
@@ -18,7 +17,7 @@ import { ELANGUAGES } from "./models/global";
 export default function App() {
   const [languageDetected, setLanguageDetected] = useState<boolean>(false);
   const isLoadingComplete = useCachedResources();
-  const colorScheme = useColorScheme();
+  const deviceColorScheme = useColorScheme();
   const {
     initInProgress,
     error,
@@ -27,6 +26,7 @@ export default function App() {
     changeSettings,
     currentUrl,
   } = useInitApp();
+  const colorScheme = "light";
 
   function onNavigationStateChange(params) {
     setCurrentUrl(params.url);
@@ -46,7 +46,7 @@ export default function App() {
               onNavigationStateChange,
             }}
           >
-            <PaperProvider theme={theme}>
+            <PaperProvider>
               <SafeAreaProvider>
                 <Navigation colorScheme={colorScheme} />
                 <StatusBar />
