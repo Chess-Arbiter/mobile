@@ -8,6 +8,7 @@ import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
 import useForm from "../../hooks/useForm";
 import { createTournamentSchema } from "../../util/validators";
+import { useTranslation } from "react-i18next";
 
 const KValues = [10, 15, 20, 30, 40].map((value) => ({
   value,
@@ -15,6 +16,7 @@ const KValues = [10, 15, 20, 30, 40].map((value) => ({
 }));
 
 export default function CreateTournamentScreen({ navigation }) {
+  const [t] = useTranslation("common");
   const { handleChange, values, handleSubmit, errors } = useForm<
     typeof createTournamentSchema,
     z.infer<typeof createTournamentSchema>
@@ -62,7 +64,7 @@ export default function CreateTournamentScreen({ navigation }) {
           value={values.k_value}
         />
         <HelperText type="info" visible>
-          Email address is invalid!
+          {t("k_description")}
         </HelperText>
       </View>
       <Button

@@ -8,14 +8,13 @@ import useColorScheme from "./hooks/useColorScheme";
 import Navigation from "./navigation";
 import { Provider as PaperProvider } from "react-native-paper";
 import useInitApp from "./hooks/useInitApp";
-import i18 from "./i18";
-import DetectLanguage from "./DetectLanguage";
+import i18 from "./util/i18";
 import AppProvider from "./context/AppContext";
 import SelectLanguage from "./components/SelectLanguage/SelectLanguage";
 import { ELANGUAGES } from "./models/global";
+import useDetectLanguage from "./hooks/useDetectLanguage";
 
 export default function App() {
-  const [languageDetected, setLanguageDetected] = useState<boolean>(false);
   const isLoadingComplete = useCachedResources();
   const deviceColorScheme = useColorScheme();
   const {
@@ -26,6 +25,7 @@ export default function App() {
     changeSettings,
     currentUrl,
   } = useInitApp();
+  const languageDetected = useDetectLanguage("ru");
   const colorScheme = "dark";
 
   function onNavigationStateChange(params) {
@@ -59,12 +59,7 @@ export default function App() {
               </SafeAreaProvider>
             </PaperProvider>
           </AppProvider>
-        ) : (
-          <DetectLanguage
-            onDetect={() => setLanguageDetected(true)}
-            language={settings.lang}
-          />
-        )}
+        ) : null}
       </I18nextProvider>
     );
   }
