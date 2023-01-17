@@ -1,12 +1,38 @@
 import React, { useState } from "react";
-import { Searchbar, Text } from "react-native-paper";
+import DeleteConfirm from "./components/DeleteConfirm/DeleteConfirm";
+import TournamentsScreenView from "./TournamentScreenView";
 
-export default function TournamentsScreen() {
+export default function TournamentsScreen({ navigation }: any) {
   const [search, setSearch] = useState("");
+  const [isDeleteConfirmVisible, setIsDeleteConfirmVisible] = useState(false);
+
+  function onTournamentPress() {}
+
+  function onCreateStart() {
+    navigation.navigate("CreateTournament");
+  }
+
+  function onDeleteStart() {
+    setIsDeleteConfirmVisible(true);
+  }
+
+  function hideDeleteConfirm() {
+    setIsDeleteConfirmVisible(false);
+  }
+
   return (
     <>
-      <Searchbar placeholder="Search" onChangeText={setSearch} value={search} />
-      <Text>AS</Text>
+      <TournamentsScreenView
+        search={search}
+        setSearch={setSearch}
+        onDeleteStart={onDeleteStart}
+        onTournamentPress={onTournamentPress}
+        onCreateStart={onCreateStart}
+      />
+      <DeleteConfirm
+        visible={isDeleteConfirmVisible}
+        hideDialog={hideDeleteConfirm}
+      />
     </>
   );
 }

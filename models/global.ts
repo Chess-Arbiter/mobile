@@ -10,3 +10,7 @@ export interface ILANGUAGE {
   value: ELANGUAGES;
   label: string;
 }
+
+export type FormValue = string | number;
+
+export type InputChangeHandler = (name: string, value: FormValue) => void;

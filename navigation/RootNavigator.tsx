@@ -1,9 +1,9 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import { RootStackParamList } from "../types";
 import BottomTabNavigator from "./BottomTabNavigator";
+import CreateTournamentScreen from "../screens/CreateTournamentScreen/CreateTournamentScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -21,7 +21,10 @@ export default function RootNavigator() {
         options={{ title: "Oops!" }}
       />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen
+          name="CreateTournament"
+          component={CreateTournamentScreen}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );

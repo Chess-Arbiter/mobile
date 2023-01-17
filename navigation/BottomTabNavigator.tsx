@@ -22,7 +22,7 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate("Modal")}
+              onPress={() => navigation.navigate("CreateTournament")}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}

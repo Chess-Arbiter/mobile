@@ -26,7 +26,7 @@ export default function App() {
     changeSettings,
     currentUrl,
   } = useInitApp();
-  const colorScheme = "light";
+  const colorScheme = "dark";
 
   function onNavigationStateChange(params) {
     setCurrentUrl(params.url);

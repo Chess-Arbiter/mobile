@@ -24,7 +24,7 @@ const linking: LinkingOptions<RootStackParamList> = {
           },
         },
       },
-      Modal: "modal",
+      CreateTournament: "tournament-create",
       NotFound: "*",
     },
   },
