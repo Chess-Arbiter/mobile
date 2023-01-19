@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { FormValue, InputChangeHandler } from "../models/global";
+import useValidationScheme from "./useValidationScheme";
 
 export default function useForm<Z, Values>({
   initialValues,
   onSubmit,
-  validationSchema,
+  getValidationScheme,
 }: {
   initialValues: any;
   onSubmit: any;
-  validationSchema: Z;
+  getValidationScheme: Z;
 }): {
   handleChange: InputChangeHandler;
   values: Values;
@@ -17,6 +18,7 @@ export default function useForm<Z, Values>({
 } {
   const [formState, setFormState] = useState(initialValues);
   const [errors, setErrors] = useState({});
+  const validationScheme = useValidationScheme(getValidationScheme);
 
   function handleChange(name: string, value: FormValue) {
     setErrors({});
@@ -24,7 +26,7 @@ export default function useForm<Z, Values>({
   }
 
   async function handleSubmit() {
-    const data = validationSchema.safeParse(formState);
+    const data = validationScheme.safeParse(formState);
 
     if (!data.success) {
       const formatted: any = data.error.format();

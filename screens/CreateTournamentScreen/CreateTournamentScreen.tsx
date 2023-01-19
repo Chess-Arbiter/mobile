@@ -7,8 +7,9 @@ import styles from "./CreateTournament.styles";
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
 import useForm from "../../hooks/useForm";
-import { createTournamentSchema } from "../../util/validators";
+import { getCreateTournamentScheme } from "../../util/validators";
 import { useTranslation } from "react-i18next";
+import { createTournament } from "../../data/api";
 
 const KValues = [10, 15, 20, 30, 40].map((value) => ({
   value,
@@ -18,14 +19,16 @@ const KValues = [10, 15, 20, 30, 40].map((value) => ({
 export default function CreateTournamentScreen({ navigation }) {
   const [t] = useTranslation("common");
   const { handleChange, values, handleSubmit, errors } = useForm<
-    typeof createTournamentSchema,
-    z.infer<typeof createTournamentSchema>
+    typeof getCreateTournamentScheme,
+    z.infer<typeof getCreateTournamentScheme>
   >({
     initialValues: { k_value: KValues[0].value },
-    onSubmit: (values: any) => {
-      navigation.navigate("Tournaments");
+    onSubmit: async (values: any) => {
+      await createTournament(values);
+
+      navigation.navigate("Tournaments", values);
     },
-    validationSchema: createTournamentSchema,
+    getValidationScheme: getCreateTournamentScheme,
   });
 
   return (

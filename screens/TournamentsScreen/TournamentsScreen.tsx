@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import useQuery from "../../hooks/useQuery";
+import { deleteTournament, searchTournament } from "../../data/api";
 import DeleteConfirm from "./components/DeleteConfirm/DeleteConfirm";
 import TournamentsScreenView from "./TournamentScreenView";
+import { SelectQueryResult } from "../../util/sql";
+import { ID } from "../../models/global";
+import { useFocusEffect } from "@react-navigation/native";
 
-export default function TournamentsScreen({ navigation }: any) {
+export default function TournamentsScreen({ route, navigation }: any) {
   const [search, setSearch] = useState("");
+  const [activeTournamentId, setActiveTournamentId] = useState<ID>("");
   const [isDeleteConfirmVisible, setIsDeleteConfirmVisible] = useState(false);
+  const fetchTournaments = useCallback(() => {
+    return searchTournament(search);
+  }, [search]);
+  const { data, setData, isLoading, error, refetch } =
+    useQuery<SelectQueryResult>(fetchTournaments);
 
   function onTournamentPress() {}
 
@@ -12,13 +23,33 @@ export default function TournamentsScreen({ navigation }: any) {
     navigation.navigate("CreateTournament");
   }
 
-  function onDeleteStart() {
+  function onDeleteStart(tournamentId: ID) {
+    setActiveTournamentId(tournamentId);
     setIsDeleteConfirmVisible(true);
+  }
+
+  async function onDelete() {
+    await deleteTournament(activeTournamentId);
+    setData((prev: any) => ({
+      ...prev,
+      docs: prev.docs?.filter(({ id }: any) => id !== activeTournamentId),
+    }));
+    setActiveTournamentId("");
+    setIsDeleteConfirmVisible(false);
   }
 
   function hideDeleteConfirm() {
     setIsDeleteConfirmVisible(false);
   }
+
+  useFocusEffect(
+    useCallback(() => {
+      refetch();
+      return () => {
+        setSearch("");
+      };
+    }, [])
+  );
 
   return (
     <>
@@ -28,8 +59,12 @@ export default function TournamentsScreen({ navigation }: any) {
         onDeleteStart={onDeleteStart}
         onTournamentPress={onTournamentPress}
         onCreateStart={onCreateStart}
+        tournaments={data}
+        isLoading={isLoading}
+        error={error}
       />
       <DeleteConfirm
+        onConfirm={onDelete}
         visible={isDeleteConfirmVisible}
         hideDialog={hideDeleteConfirm}
       />

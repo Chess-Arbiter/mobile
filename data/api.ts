@@ -1,5 +1,6 @@
 import { SQLResultSet } from "expo-sqlite";
 import { ID } from "../models/global.js";
+import formatSelectQueryResult from "../util/sql";
 import db from "./db";
 
 function runQuery(query: string, params: any = []): Promise<SQLResultSet> {
@@ -33,9 +34,14 @@ export const createTournament = ({
   );
 };
 
-export const searchTournament = (name = "") => {
-  return runQuery("select * from tournaments where name like ?", [`${name}%`]);
-};
+export async function searchTournament(name = "") {
+  const queryResykt = await runQuery(
+    "select * from tournaments where name like ? order by id desc",
+    [`${name}%`]
+  );
+
+  return formatSelectQueryResult(queryResykt);
+}
 
 export const deleteTournament = (id: ID) => {
   return new Promise((resolve, reject) => {

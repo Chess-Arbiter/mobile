@@ -13,7 +13,7 @@ import errors_hy from "../data/translations/hy/errors.json";
 i18next.use(initReactI18next).init({
   compatibilityJSON: "v3",
   interpolation: { escapeValue: false }, // React already does escaping
-  lng: "ru", // language to use
+  lng: "hy", // language to use
   resources: {
     en: {
       common: common_en,

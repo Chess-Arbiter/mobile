@@ -1,20 +1,16 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  fab: {
-    position: "absolute",
-    margin: 16,
-    right: 0,
-    bottom: 0,
-  },
   wrapper: {
-    display: "flex",
+    textAlign: "center",
     width: "100%",
-    height: "100%",
-  },
-  tournamentsWrapper: {
-    flex: 1,
+    display: "flex",
     justifyContent: "center",
+    alignItems: "center",
+  },
+  icon: {
+    padding: 0,
+    margin: 0,
   },
 });
 

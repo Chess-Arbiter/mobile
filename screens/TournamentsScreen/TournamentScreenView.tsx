@@ -1,6 +1,14 @@
-import React, { Fragment } from "react";
-import { Searchbar, List, FAB, Divider, IconButton } from "react-native-paper";
-import tournaments from "./mock";
+import React from "react";
+import { View } from "react-native";
+import {
+  Searchbar,
+  FAB,
+  ActivityIndicator,
+  Text,
+  Button,
+} from "react-native-paper";
+import EmptyState from "./components/EmptyState/EmptyState";
+import TournamentsList from "./components/TournamentsList/TournamentsList";
 import { TournamentScreenType } from "./TournamentScreen.types";
 import styles from "./TournamentsScreen.styles";
 
@@ -10,26 +18,43 @@ export default function TournamentsScreenView({
   onTournamentPress,
   onDeleteStart,
   onCreateStart,
+  tournaments,
+  isLoading,
 }: TournamentScreenType) {
+  const isEmptyState = tournaments?.docs?.length === 0 && !search && !isLoading;
+
   return (
-    <>
-      <Searchbar placeholder="Search" onChangeText={setSearch} value={search} />
-      {tournaments.map((tournament) => (
-        <Fragment key={tournament.id}>
-          <List.Item
-            onPress={() => onTournamentPress(tournament.id)}
-            title={tournament.name}
-            right={(props) => (
-              <IconButton
-                icon="delete"
-                onPress={() => onDeleteStart(tournament.id)}
-              />
-            )}
+    <View style={styles.wrapper}>
+      {!isEmptyState && (
+        <Searchbar
+          placeholder="Search"
+          onChangeText={setSearch}
+          value={search}
+        />
+      )}
+      <TournamentsList
+        tournaments={tournaments?.docs}
+        onTournamentPress={onTournamentPress}
+        onDeleteStart={onDeleteStart}
+      />
+      <View style={styles.tournamentsWrapper}>
+        {isLoading && <ActivityIndicator />}
+        {isEmptyState && (
+          <EmptyState
+            content={
+              <>
+                <Text>You don't have tournaments yet</Text>
+                <Button onPress={onCreateStart} icon="plus">
+                  Create
+                </Button>
+              </>
+            }
           />
-          <Divider />
-        </Fragment>
-      ))}
-      <FAB icon="plus" style={styles.fab} onPress={() => onCreateStart()} />
-    </>
+        )}
+      </View>
+      {!isEmptyState && (
+        <FAB icon="plus" style={styles.fab} onPress={() => onCreateStart()} />
+      )}
+    </View>
   );
 }
