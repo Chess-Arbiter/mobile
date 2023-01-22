@@ -6,8 +6,9 @@ import TournamentsScreenView from "./TournamentScreenView";
 import { SelectQueryResult } from "../../util/sql";
 import { ID } from "../../models/global";
 import { useFocusEffect } from "@react-navigation/native";
+import { ITournament } from "../../models/tournaments";
 
-export default function TournamentsScreen({ route, navigation }: any) {
+export default function TournamentsScreen({ navigation }: any) {
   const [search, setSearch] = useState("");
   const [activeTournamentId, setActiveTournamentId] = useState<ID>("");
   const [isDeleteConfirmVisible, setIsDeleteConfirmVisible] = useState(false);
@@ -17,7 +18,9 @@ export default function TournamentsScreen({ route, navigation }: any) {
   const { data, setData, isLoading, error, refetch } =
     useQuery<SelectQueryResult>(fetchTournaments);
 
-  function onTournamentPress() {}
+  function onTournamentPress(tournament: ITournament) {
+    navigation.navigate("Tournament", { tournament, name: tournament.name });
+  }
 
   function onCreateStart() {
     navigation.navigate("CreateTournament");

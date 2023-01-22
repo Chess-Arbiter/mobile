@@ -28,6 +28,9 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
 export type RootTabParamList = {
   Handbook: undefined;
   Tournaments: undefined;
+  Tournament: undefined;
+  Calculator: undefined;
+  Settings: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

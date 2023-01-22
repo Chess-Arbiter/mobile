@@ -11,3 +11,16 @@ export function getCreateTournamentScheme(t: any) {
     k_value: z.number(),
   });
 }
+
+export function getCalculatorScheme(t: any) {
+  return z.object({
+    y_r: z.number().min(1, translate("required", t)),
+    o_r: z.number().min(1, translate("required", t)),
+    res: z.number(),
+    k_value: z.number(),
+  });
+}
+
+const CalculatorScheme = getCalculatorScheme(() => {});
+
+export type CalculatorSchemeType = z.infer<typeof CalculatorScheme>;

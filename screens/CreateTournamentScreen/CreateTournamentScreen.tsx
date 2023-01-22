@@ -39,12 +39,8 @@ export default function CreateTournamentScreen({ navigation }) {
         label="Name"
         value={values.name}
         handleChange={handleChange}
+        error={errors.name}
       />
-      {errors.name && (
-        <HelperText type="error" visible>
-          {errors.name}
-        </HelperText>
-      )}
       <Input
         style={styles.formGroup}
         keyboardType="numeric"
@@ -53,12 +49,8 @@ export default function CreateTournamentScreen({ navigation }) {
         name="rating"
         handleChange={handleChange}
         value={values.rating}
+        error={errors.rating}
       />
-      {errors.rating && (
-        <HelperText type="error" visible>
-          {errors.rating}
-        </HelperText>
-      )}
       <View style={styles.formGroup}>
         <Select
           options={KValues}

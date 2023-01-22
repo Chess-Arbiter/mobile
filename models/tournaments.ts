@@ -11,3 +11,8 @@ export interface IGame {
   tournament_id: number;
   change: number;
 }
+
+export type CalculationResult = {
+  change: number;
+  current_raiting: number;
+};

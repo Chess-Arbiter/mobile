@@ -1,6 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import NotFoundScreen from "../screens/NotFoundScreen";
+import NotFoundScreen from "../screens/NotFoundScreen/NotFoundScreen";
 import { RootStackParamList } from "../types";
 import BottomTabNavigator from "./BottomTabNavigator";
 import CreateTournamentScreen from "../screens/CreateTournamentScreen/CreateTournamentScreen";

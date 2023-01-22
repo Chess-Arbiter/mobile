@@ -55,8 +55,13 @@ export const deleteTournament = (id: ID) => {
   });
 };
 
-export const getGames = (id: ID) => {
-  return runQuery(`select * from  games where tournament_id=?`, [id]);
+export const getGames = async (tournamentId: ID) => {
+  const queryResykt = await runQuery(
+    `select * from  games where tournament_id=?`,
+    [tournamentId]
+  );
+
+  return formatSelectQueryResult(queryResykt);
 };
 
 export const createGame = (

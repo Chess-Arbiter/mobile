@@ -32,11 +32,13 @@ export default function TournamentsScreenView({
           value={search}
         />
       )}
-      <TournamentsList
-        tournaments={tournaments?.docs}
-        onTournamentPress={onTournamentPress}
-        onDeleteStart={onDeleteStart}
-      />
+      {!isEmptyState && (
+        <TournamentsList
+          tournaments={tournaments?.docs}
+          onTournamentPress={onTournamentPress}
+          onDeleteStart={onDeleteStart}
+        />
+      )}
       <View style={styles.tournamentsWrapper}>
         {isLoading && <ActivityIndicator />}
         {isEmptyState && (

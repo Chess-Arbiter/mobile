@@ -13,6 +13,7 @@ import AppProvider from "./context/AppContext";
 import SelectLanguage from "./components/SelectLanguage/SelectLanguage";
 import { ELANGUAGES } from "./models/global";
 import useDetectLanguage from "./hooks/useDetectLanguage";
+import { ScrollView } from "react-native";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
