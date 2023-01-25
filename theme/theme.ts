@@ -42,7 +42,10 @@ export const CombinedDefaultTheme = {
   colors: {
     ...MD3LightTheme.colors,
     ...LightTheme.colors,
-    secondary: THEME_COLORS.primary,
+    primary: THEME_COLORS.info,
+    background: THEME_COLORS.white,
+    text: THEME_COLORS.info,
+    error: THEME_COLORS.danger,
   },
 };
 
@@ -54,9 +57,9 @@ export const CombinedDarkTheme = {
     ...DarkTheme.colors,
     primary: THEME_COLORS.primary,
     background: THEME_COLORS.black,
-    backdrop: THEME_COLORS.info,
     text: THEME_COLORS.white,
-    secondary: THEME_COLORS.primary,
+    secondary: THEME_COLORS.gray,
+    error: THEME_COLORS.danger,
   },
 };
 

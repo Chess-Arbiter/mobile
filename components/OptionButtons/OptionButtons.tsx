@@ -7,6 +7,7 @@ export default function OptionButtons({
   value,
   onChange,
   name,
+  ...props
 }: OptionButtonProps) {
   function handleChange(newValue: string) {
     onChange(name, newValue);
@@ -17,6 +18,7 @@ export default function OptionButtons({
       value={value}
       onValueChange={handleChange}
       buttons={options}
+      {...props}
     />
   );
 }

@@ -10,6 +10,7 @@ import useForm from "../../hooks/useForm";
 import { getCreateTournamentScheme } from "../../util/validators";
 import { useTranslation } from "react-i18next";
 import { createTournament } from "../../data/api";
+import PrimaryButton from "../../components/buttons/PrimaryButton";
 
 const KValues = [10, 15, 20, 30, 40].map((value) => ({
   value,
@@ -36,7 +37,7 @@ export default function CreateTournamentScreen({ navigation }) {
       <Input
         style={styles.formGroup}
         name="name"
-        label="Name"
+        label={t("tournament_name")}
         value={values.name}
         handleChange={handleChange}
         error={errors.name}
@@ -45,7 +46,7 @@ export default function CreateTournamentScreen({ navigation }) {
         style={styles.formGroup}
         keyboardType="numeric"
         type="number"
-        label="Your Rautubg"
+        label={t("your_rating")}
         name="rating"
         handleChange={handleChange}
         value={values.rating}
@@ -62,13 +63,9 @@ export default function CreateTournamentScreen({ navigation }) {
           {t("k_description")}
         </HelperText>
       </View>
-      <Button
-        onPress={handleSubmit}
-        style={styles.submitButton}
-        buttonColor="red"
-      >
-        Save
-      </Button>
+      <PrimaryButton onPress={handleSubmit} style={styles.submitButton}>
+        {t("create_tournament")}
+      </PrimaryButton>
     </View>
   );
 }

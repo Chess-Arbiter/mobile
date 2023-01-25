@@ -1,7 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { Button, HelperText } from "react-native-paper";
-import { z } from "zod";
+import { Button, HelperText, useTheme } from "react-native-paper";
 
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
@@ -17,6 +16,7 @@ import styles from "./CreateTournament.styles";
 import OptionButtons from "../OptionButtons/OptionButtons";
 import { CalculationResult } from "../../models/tournaments";
 import { calculateRaiting } from "../../util/helpers";
+import PrimaryButton from "../buttons/PrimaryButton";
 
 const KValues = [10, 15, 20, 30, 40].map((value) => ({
   value,
@@ -37,6 +37,7 @@ export default function Calculator({
   ) => void;
 }) {
   const [t] = useTranslation("common");
+  const theme = useTheme();
   const gameResultOptions = [
     { label: t("win") as string, value: 1 },
     { label: t("draw") as string, value: 0.5 },
@@ -103,13 +104,9 @@ export default function Calculator({
           </HelperText>
         </View>
       )}
-      <Button
-        onPress={handleSubmit}
-        style={styles.submitButton}
-        buttonColor="red"
-      >
-        Save
-      </Button>
+      <PrimaryButton onPress={handleSubmit} style={styles.submitButton}>
+        {t("calculate")}
+      </PrimaryButton>
     </View>
   );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Button, Dialog, Portal, Text } from "react-native-paper";
 import { DeleteConfirmProps } from "../../TournamentScreen.types";
 
@@ -7,18 +8,18 @@ export default function DeleteConfirm({
   hideDialog,
   onConfirm,
 }: DeleteConfirmProps) {
+  const [t] = useTranslation("common");
+
   return (
     <Portal>
       <Dialog visible={visible} onDismiss={hideDialog}>
-        <Dialog.Title>Delete tournament</Dialog.Title>
+        <Dialog.Title>{t("delete_tournament")}</Dialog.Title>
         <Dialog.Content>
-          <Text variant="bodyMedium">
-            Are you sure you want to delete this tournament?
-          </Text>
+          <Text variant="bodyMedium">{t("delete_tournament_message")}</Text>
         </Dialog.Content>
         <Dialog.Actions>
-          <Button onPress={hideDialog}>Cancel</Button>
-          <Button onPress={onConfirm}>Yes</Button>
+          <Button onPress={hideDialog}>{t("cancel")}</Button>
+          <Button onPress={onConfirm}>{t("confirm")}</Button>
         </Dialog.Actions>
       </Dialog>
     </Portal>

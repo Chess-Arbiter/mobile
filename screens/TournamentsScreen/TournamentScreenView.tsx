@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import {
   Searchbar,
@@ -21,6 +22,7 @@ export default function TournamentsScreenView({
   tournaments,
   isLoading,
 }: TournamentScreenType) {
+  const [t] = useTranslation("common");
   const isEmptyState = tournaments?.docs?.length === 0 && !search && !isLoading;
 
   return (
@@ -45,9 +47,22 @@ export default function TournamentsScreenView({
           <EmptyState
             content={
               <>
-                <Text>You don't have tournaments yet</Text>
-                <Button onPress={onCreateStart} icon="plus">
-                  Create
+                <Text
+                  style={{
+                    fontWeight: "700",
+                    maxWidth: 250,
+                    textAlign: "center",
+                    fontSize: 16,
+                  }}
+                >
+                  {t("empty_tournaments")}
+                </Text>
+                <Button
+                  onPress={onCreateStart}
+                  style={{ marginTop: 16 }}
+                  icon="plus"
+                >
+                  {t("create_tournament")}
                 </Button>
               </>
             }

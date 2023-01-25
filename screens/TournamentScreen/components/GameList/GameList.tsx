@@ -39,14 +39,14 @@ export default function GameList({
   if (!games || (!isLoading && games.length === 0)) {
     return (
       <Text style={{ textAlign: "center", marginTop: 16, marginBottom: 16 }}>
-        No Games Found
+        {t("no_games_found")}
       </Text>
     );
   }
 
   return (
     <List.Accordion
-      title="Games"
+      title={t("games")}
       onPress={handleToggleGames}
       expanded={isGamesOpen}
       left={(props) => <List.Icon {...props} icon="chess-king" />}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Picker } from "@react-native-picker/picker";
 import { SelectProps } from "./Select.types";
+import { useTheme } from "react-native-paper";
 
 export default function Select({
   value,
@@ -8,11 +9,12 @@ export default function Select({
   name,
   options,
 }: SelectProps) {
+  const theme = useTheme();
   return (
     <Picker
       selectedValue={value}
       style={{
-        backgroundColor: "red",
+        backgroundColor: theme.colors.secondary,
         color: "white",
       }}
       mode="dropdown"

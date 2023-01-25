@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import * as Network from "expo-network";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { I18nextProvider } from "react-i18next";
@@ -13,27 +14,46 @@ import AppProvider from "./context/AppContext";
 import SelectLanguage from "./components/SelectLanguage/SelectLanguage";
 import { ELANGUAGES } from "./models/global";
 import useDetectLanguage from "./hooks/useDetectLanguage";
-import { ScrollView } from "react-native";
+import { CombinedDarkTheme, CombinedDefaultTheme } from "./theme/theme";
+import ErrorScreen from "./screens/ErrorScreen/ErrorScreen";
 
 export default function App() {
+  const [hasError, setHasError] = useState(false);
+  const [isConnectionDetected, setIsConnectionDetected] = useState(false);
   const isLoadingComplete = useCachedResources();
   const deviceColorScheme = useColorScheme();
   const {
     initInProgress,
-    error,
     settings,
     setCurrentUrl,
     changeSettings,
     currentUrl,
   } = useInitApp();
-  const languageDetected = useDetectLanguage("ru");
-  const colorScheme = "dark";
+  const languageDetected = useDetectLanguage(settings.lang);
+  const colorScheme = settings.theme || deviceColorScheme;
 
   function onNavigationStateChange(params) {
     setCurrentUrl(params.url);
   }
 
-  if (!isLoadingComplete || initInProgress) {
+  function onError() {
+    setHasError(true);
+  }
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { isConnected } = await Network.getNetworkStateAsync();
+        setHasError(!isConnected);
+      } catch {
+        setHasError(false);
+      } finally {
+        setIsConnectionDetected(true);
+      }
+    })();
+  }, []);
+
+  if (!isLoadingComplete || initInProgress || !isConnectionDetected) {
     return null;
   } else {
     return (
@@ -45,18 +65,31 @@ export default function App() {
               changeSettings,
               currentUrl,
               onNavigationStateChange,
+              onError,
             }}
           >
-            <PaperProvider>
+            <PaperProvider
+              theme={
+                colorScheme === "dark"
+                  ? CombinedDarkTheme
+                  : CombinedDefaultTheme
+              }
+            >
               <SafeAreaProvider>
-                <Navigation colorScheme={colorScheme} />
-                <StatusBar />
-                <SelectLanguage
-                  onSelect={(value: ELANGUAGES) =>
-                    changeSettings("lang", value)
-                  }
-                  open={!settings["lang"]}
-                />
+                {!hasError ? (
+                  <>
+                    <Navigation colorScheme={colorScheme} />
+                    <StatusBar />
+                    <SelectLanguage
+                      onSelect={(value: ELANGUAGES) =>
+                        changeSettings("lang", value)
+                      }
+                      open={!settings["lang"]}
+                    />
+                  </>
+                ) : (
+                  <ErrorScreen />
+                )}
               </SafeAreaProvider>
             </PaperProvider>
           </AppProvider>

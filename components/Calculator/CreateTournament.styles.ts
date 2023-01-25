@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     marginTop: 40,
+    color: "#fff",
   },
 });
 
