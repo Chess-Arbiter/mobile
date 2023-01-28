@@ -6,6 +6,7 @@ import { BackHandler, View } from "react-native";
 import { WebView } from "react-native-webview";
 import { useAppContext } from "../../context/AppContext";
 import { useTranslation } from "react-i18next";
+import { AddBanner } from "../../components/Ads";
 
 const PAGE_STATUSES = {
   loaded: "loaded",
@@ -71,7 +72,6 @@ export default function TabOneScreen() {
           {t("please_wait")}
         </Text>
       )}
-      {/* <Ad /> */}
     </View>
   );
 }

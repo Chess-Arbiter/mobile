@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import * as Network from "expo-network";
+import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { I18nextProvider } from "react-i18next";
@@ -18,8 +17,6 @@ import { CombinedDarkTheme, CombinedDefaultTheme } from "./theme/theme";
 import ErrorScreen from "./screens/ErrorScreen/ErrorScreen";
 
 export default function App() {
-  const [hasError, setHasError] = useState(false);
-  const [isConnectionDetected, setIsConnectionDetected] = useState(false);
   const isLoadingComplete = useCachedResources();
   const deviceColorScheme = useColorScheme();
   const {
@@ -28,6 +25,9 @@ export default function App() {
     setCurrentUrl,
     changeSettings,
     currentUrl,
+    onError,
+    hasError,
+    isConnectionDetected,
   } = useInitApp();
   const languageDetected = useDetectLanguage(settings.lang);
   const colorScheme = settings.theme || deviceColorScheme;
@@ -35,23 +35,6 @@ export default function App() {
   function onNavigationStateChange(params) {
     setCurrentUrl(params.url);
   }
-
-  function onError() {
-    setHasError(true);
-  }
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const { isConnected } = await Network.getNetworkStateAsync();
-        setHasError(!isConnected);
-      } catch {
-        setHasError(false);
-      } finally {
-        setIsConnectionDetected(true);
-      }
-    })();
-  }, []);
 
   if (!isLoadingComplete || initInProgress || !isConnectionDetected) {
     return null;
