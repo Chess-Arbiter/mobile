@@ -9,7 +9,7 @@ import { FormValue } from "../../models/global";
 
 export default function SettingsScreen() {
   const [t] = useTranslation("common");
-  const { settings, changeSettings } = useAppContext();
+  const { settings, changeSettings, colorScheme } = useAppContext();
 
   function handleChange(name: string, value: FormValue) {
     changeSettings(name, value);
@@ -47,7 +47,7 @@ export default function SettingsScreen() {
       >
         <Text style={{ fontSize: 16, fontWeight: "700" }}>Dark Mode</Text>
         <Switch
-          value={settings.theme === "dark"}
+          value={colorScheme === "dark"}
           style={{ paddingLeft: 16 }}
           onChange={handleToggleTheme}
         />

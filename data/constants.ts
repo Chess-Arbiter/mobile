@@ -1,6 +1,6 @@
 import { ELANGUAGES, ILANGUAGE } from "../models/global";
 
-export const APP_BASE_URL: string = "http://1c10-78-109-79-142.ngrok.io/";
+export const APP_BASE_URL: string = "https://chess-arbiter-62925.web.app/";
 export const LANGUAGES: ILANGUAGE[] = [
   { value: ELANGUAGES.EN, label: "English" },
   { value: ELANGUAGES.RU, label: "Русский" },

@@ -15,6 +15,7 @@ import { ELANGUAGES } from "./models/global";
 import useDetectLanguage from "./hooks/useDetectLanguage";
 import { CombinedDarkTheme, CombinedDefaultTheme } from "./theme/theme";
 import ErrorScreen from "./screens/ErrorScreen/ErrorScreen";
+import { LANGUAGES } from "./data/constants";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -29,7 +30,9 @@ export default function App() {
     hasError,
     isConnectionDetected,
   } = useInitApp();
-  const languageDetected = useDetectLanguage(settings.lang);
+  const languageDetected = useDetectLanguage(
+    settings.lang || LANGUAGES[0].value
+  );
   const colorScheme = settings.theme || deviceColorScheme;
 
   function onNavigationStateChange(params) {
@@ -45,6 +48,7 @@ export default function App() {
           <AppProvider
             contextData={{
               settings,
+              colorScheme,
               changeSettings,
               currentUrl,
               onNavigationStateChange,

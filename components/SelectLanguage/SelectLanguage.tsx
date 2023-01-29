@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, View } from "react-native";
-import { List } from "react-native-paper";
+import { Divider, List, useTheme } from "react-native-paper";
 import { useTranslation } from "react-i18next";
 import { LANGUAGES } from "../../data/constants";
 import { ELANGUAGES } from "../../models/global";
@@ -12,6 +12,7 @@ export default function SelectLanguage({
   open,
 }: SelectLanguageProps) {
   const [t, i18n] = useTranslation("common");
+  const theme = useTheme();
   function handlePress(language: ELANGUAGES) {
     setTimeout(() => {
       i18n.changeLanguage(language);
@@ -27,14 +28,17 @@ export default function SelectLanguage({
     >
       <View style={styles.container}>
         <List.Section>
-          <List.Subheader>
-            <List.Icon icon="flag" />
+          <List.Subheader
+            style={{ color: theme.colors.info, fontWeight: "700" }}
+          >
             Select language
           </List.Subheader>
+          <Divider />
           {LANGUAGES.map(({ label, value }) => (
             <List.Item
               onPress={() => handlePress(value)}
               key={value}
+              titleStyle={{ color: theme.colors.info, fontWeight: "600" }}
               title={label}
             />
           ))}
