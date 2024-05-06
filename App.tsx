@@ -26,7 +26,6 @@ export default function App() {
     setCurrentUrl,
     changeSettings,
     currentUrl,
-    onError,
     hasError,
     isConnectionDetected,
   } = useInitApp();
@@ -35,7 +34,7 @@ export default function App() {
   );
   const colorScheme = settings.theme || deviceColorScheme;
 
-  function onNavigationStateChange(params) {
+  function onNavigationStateChange(params: { url: string }) {
     setCurrentUrl(params.url);
   }
 
@@ -52,7 +51,6 @@ export default function App() {
               changeSettings,
               currentUrl,
               onNavigationStateChange,
-              onError,
             }}
           >
             <PaperProvider
