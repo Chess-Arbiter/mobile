@@ -15,4 +15,5 @@ export interface IGame {
 export type CalculationResult = {
   change: number;
   current_rating: number;
+  y_r: number;
 };
