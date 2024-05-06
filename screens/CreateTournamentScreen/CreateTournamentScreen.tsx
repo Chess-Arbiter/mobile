@@ -32,12 +32,15 @@ export default function CreateTournamentScreen({ navigation }) {
     getValidationScheme: getCreateTournamentScheme,
   });
 
+  const tournamentName = t("tournament_name");
+  const yourRating = t("your_rating");
+
   return (
     <View style={styles.container}>
       <Input
         style={styles.formGroup}
         name="name"
-        label={t("tournament_name")}
+        label={tournamentName}
         value={values.name}
         handleChange={handleChange}
         error={errors.name}
@@ -46,7 +49,7 @@ export default function CreateTournamentScreen({ navigation }) {
         style={styles.formGroup}
         keyboardType="numeric"
         type="number"
-        label={t("your_rating")}
+        label={yourRating}
         name="rating"
         handleChange={handleChange}
         value={values.rating}
