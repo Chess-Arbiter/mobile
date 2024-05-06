@@ -1,7 +1,7 @@
 import { CalculationResult } from "../models/tournaments";
 import { CalculatorSchemeType } from "./validators";
 
-export function calculateRaiting({
+export function calculateRating({
   y_r,
   o_r,
   k_value,
@@ -16,11 +16,11 @@ export function calculateRaiting({
   }
   const r = Math.pow(10, diff / 400);
   const E = 1 / (1 + r);
-  const current_raiting = y_r + k * (res - E);
-  const change = -(y_r - current_raiting);
+  const current_rating = y_r + k * (res - E);
+  const change = -(y_r - current_rating);
   return {
     change: +Number(change).toFixed(2),
-    current_raiting: +Number(current_raiting).toFixed(2),
+    current_rating: +Number(current_rating).toFixed(2),
   };
 }
 

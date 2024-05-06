@@ -46,7 +46,7 @@ const initDb = () => {
         `create table if not exists 
         games(
             id integer primary key not null, 
-            oponent_rating integer, 
+            opponent_rating integer, 
             tournament_id integer not null,
             change integer not null, 
             FOREIGN KEY (tournament_id) REFERENCES tournaments(id)

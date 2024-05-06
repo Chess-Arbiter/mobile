@@ -20,8 +20,8 @@ export default function CalculatorScreen() {
         <>
           <Divider />
           <CalculatorResult
-            currentRaiting={calculationResult.y_r}
-            raitingChange={calculationResult.change}
+            currentRating={calculationResult.y_r}
+            ratingChange={calculationResult.change}
           />
         </>
       )}

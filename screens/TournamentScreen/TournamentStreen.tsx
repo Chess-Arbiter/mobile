@@ -31,7 +31,7 @@ export default function TournamentScreen({ route }: any) {
     setData: setGames,
     refetch,
   } = useQuery<IGame>(fetchGames);
-  const raitingChange = useMemo(() => {
+  const ratingChange = useMemo(() => {
     if (!games) return 0;
     const result = games.docs.reduce((res, { change }) => res + change, 0);
     return formatFloatNumber(result);
@@ -65,7 +65,7 @@ export default function TournamentScreen({ route }: any) {
       <Calculator
         isTournamentScreen
         kValue={tournament?.k_value}
-        player1Raiting={tournament?.rating}
+        player1Rating={tournament?.rating}
         onCalculate={onCreaqteGame}
       />
       <Divider />
@@ -77,8 +77,8 @@ export default function TournamentScreen({ route }: any) {
       <Divider />
       {games?.docs?.length > 0 && (
         <CalculatorResult
-          currentRaiting={tournament.rating}
-          raitingChange={raitingChange}
+          currentRating={tournament.rating}
+          ratingChange={ratingChange}
         />
       )}
     </ScrollView>

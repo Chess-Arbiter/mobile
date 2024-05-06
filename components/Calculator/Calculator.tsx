@@ -15,7 +15,7 @@ import { createTournament } from "../../data/api";
 import styles from "./CreateTournament.styles";
 import OptionButtons from "../OptionButtons/OptionButtons";
 import { CalculationResult } from "../../models/tournaments";
-import { calculateRaiting } from "../../util/helpers";
+import { calculateRating } from "../../util/helpers";
 import PrimaryButton from "../buttons/PrimaryButton";
 
 const KValues = [10, 15, 20, 30, 40].map((value) => ({
@@ -26,12 +26,12 @@ const KValues = [10, 15, 20, 30, 40].map((value) => ({
 export default function Calculator({
   isTournamentScreen = false,
   kValue = KValues[0].value,
-  player1Raiting = 0,
+  player1Rating = 0,
   onCalculate,
 }: {
   isTournamentScreen?: boolean;
   kValue?: number;
-  player1Raiting?: number;
+  player1Rating?: number;
   onCalculate: (
     calculationResult: CalculatorSchemeType & CalculationResult
   ) => void;
@@ -49,11 +49,11 @@ export default function Calculator({
   >({
     initialValues: {
       k_value: kValue,
-      y_r: player1Raiting,
+      y_r: player1Rating,
       res: gameResultOptions[0].value,
     },
     onSubmit: (valuese: CalculatorSchemeType) => {
-      const calculationResult = calculateRaiting(values);
+      const calculationResult = calculateRating(values);
       onCalculate({ ...calculationResult, ...values });
     },
     getValidationScheme: getCalculatorScheme,
@@ -77,7 +77,7 @@ export default function Calculator({
         style={styles.formGroup}
         keyboardType="numeric"
         type="number"
-        label={t("oponent_rating") as string}
+        label={t("opponent_rating") as string}
         name="o_r"
         handleChange={handleChange}
         value={values.o_r}

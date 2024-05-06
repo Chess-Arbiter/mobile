@@ -7,12 +7,12 @@ export interface ITournament {
 
 export interface IGame {
   id: number;
-  oponent_rating: number;
+  opponent_rating: number;
   tournament_id: number;
   change: number;
 }
 
 export type CalculationResult = {
   change: number;
-  current_raiting: number;
+  current_rating: number;
 };

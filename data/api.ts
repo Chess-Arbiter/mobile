@@ -66,12 +66,12 @@ export const getGames = async (tournamentId: ID) => {
 
 export const createGame = (
   tournament_id: ID,
-  oponent_rating: number,
+  opponent_rating: number,
   change: number
 ) => {
   return runQuery(
-    `insert into games(tournament_id,oponent_rating,change) values(?,?,?)`,
-    [tournament_id, oponent_rating, change]
+    `insert into games(tournament_id,opponent_rating,change) values(?,?,?)`,
+    [tournament_id, opponent_rating, change]
   );
 };
 
