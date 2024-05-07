@@ -17,12 +17,13 @@ const KValues = [10, 15, 20, 30, 40].map((value) => ({
   label: String(value),
 }));
 
-export default function CreateTournamentScreen({ navigation }) {
+export default function CreateTournamentScreen({
+  navigation,
+}: {
+  navigation: any;
+}) {
   const [t] = useTranslation("common");
-  const { handleChange, values, handleSubmit, errors } = useForm<
-    typeof getCreateTournamentScheme,
-    z.infer<typeof getCreateTournamentScheme>
-  >({
+  const { handleChange, values, handleSubmit, errors } = useForm<any, any>({
     initialValues: { k_value: KValues[0].value },
     onSubmit: async (values: any) => {
       await createTournament(values);
