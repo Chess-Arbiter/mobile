@@ -5,7 +5,10 @@ import { List } from "react-native-paper";
 export default function CalculatorResult({
   currentRating,
   ratingChange,
-}: any) {
+}: {
+  currentRating: number;
+  ratingChange: number;
+}) {
   const [t] = useTranslation("common");
 
   const listIcon = ratingChange >= 0 ? "happy" : "sad";
