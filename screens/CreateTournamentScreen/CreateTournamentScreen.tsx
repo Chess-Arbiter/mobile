@@ -1,8 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { Button, HelperText } from "react-native-paper";
-import { z } from "zod";
-
+import { HelperText } from "react-native-paper";
 import styles from "./CreateTournament.styles";
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";

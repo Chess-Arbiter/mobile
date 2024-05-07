@@ -35,12 +35,12 @@ export const createTournament = ({
 };
 
 export async function searchTournament(name = "") {
-  const queryResykt = await runQuery(
+  const queryRes = await runQuery(
     "select * from tournaments where name like ? order by id desc",
     [`${name}%`]
   );
 
-  return formatSelectQueryResult(queryResykt);
+  return formatSelectQueryResult(queryRes);
 }
 
 export const deleteTournament = (id: ID) => {
@@ -56,12 +56,12 @@ export const deleteTournament = (id: ID) => {
 };
 
 export const getGames = async (tournamentId: ID) => {
-  const queryResykt = await runQuery(
+  const queryRes = await runQuery(
     `select * from  games where tournament_id=?`,
     [tournamentId]
   );
 
-  return formatSelectQueryResult(queryResykt);
+  return formatSelectQueryResult(queryRes);
 };
 
 export const createGame = (

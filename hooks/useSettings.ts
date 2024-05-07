@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getSettings } from "../data/api";
 import initDb from "../data/initDb";
 import { updateOrCreateSetting } from "../data/api";
