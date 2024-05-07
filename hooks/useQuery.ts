@@ -14,7 +14,7 @@ type useQueryResult<T> = {
   setData: any;
 };
 
-export default function useQuery<T>(runQuery: any): useQueryResult<T> {
+export default function useQuery<T>(runQuery: any): useQueryResult<T[]> {
   const [data, setData] = useState<T[]>();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
