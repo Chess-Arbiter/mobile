@@ -22,22 +22,32 @@ import { formatFloatNumber } from "../../util/helpers";
 
 export default function TournamentScreen({ route }: any) {
   const { tournament }: { tournament: ITournament } = route.params;
+
   const fetchGames = useCallback(() => {
     return getGames(tournament.id);
   }, [tournament.id]);
+
   const {
     data: games,
     isLoading,
     setData: setGames,
     refetch,
   } = useQuery<IGame>(fetchGames);
+
   const ratingChange = useMemo(() => {
-    if (!games) return 0;
-    const result = games.docs.reduce((res, { change }) => res + change, 0);
+    if (!games) {
+      return 0;
+    }
+
+    const result = games.docs.reduce(
+      (res: any, { change }: { change: any }) => res + change,
+      0
+    );
+
     return formatFloatNumber(result);
   }, [games]);
 
-  async function onCreaqteGame(
+  async function onCreateGame(
     calculationResult: CalculatorSchemeType & CalculationResult
   ) {
     try {
@@ -54,9 +64,9 @@ export default function TournamentScreen({ route }: any) {
 
   async function onDeleteGame(gameId: ID) {
     await deleteGame(gameId);
-    setGames((prev) => ({
+    setGames((prev: any) => ({
       ...prev,
-      docs: prev.docs.filter(({ id }) => id !== gameId),
+      docs: prev.docs.filter(({ id }: { id: ID }) => id !== gameId),
     }));
   }
 
@@ -66,7 +76,7 @@ export default function TournamentScreen({ route }: any) {
         isTournamentScreen
         kValue={tournament?.k_value}
         player1Rating={tournament?.rating}
-        onCalculate={onCreaqteGame}
+        onCalculate={onCreateGame}
       />
       <Divider />
       <GameList

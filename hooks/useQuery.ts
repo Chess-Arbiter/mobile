@@ -9,7 +9,7 @@ import {
 type useQueryResult<T> = {
   error: string;
   isLoading: boolean;
-  data: T | undefined;
+  data: any;
   refetch: () => void;
   setData: any;
 };
