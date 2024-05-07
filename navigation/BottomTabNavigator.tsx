@@ -28,7 +28,9 @@ function Tournaments() {
       <Stack.Screen
         name="Tournament"
         component={TournamentScreen}
-        options={({ route }) => ({ title: route.params?.name as string })}
+        options={({ route }: { route: any }) => ({
+          title: route.params?.name as string,
+        })}
       />
     </Stack.Navigator>
   );
