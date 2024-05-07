@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { Button, HelperText, useTheme } from "react-native-paper";
+import { HelperText } from "react-native-paper";
 
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
@@ -11,7 +11,6 @@ import {
   getCreateTournamentScheme,
 } from "../../util/validators";
 import { useTranslation } from "react-i18next";
-import { createTournament } from "../../data/api";
 import styles from "./CreateTournament.styles";
 import OptionButtons from "../OptionButtons/OptionButtons";
 import { CalculationResult } from "../../models/tournaments";
@@ -37,7 +36,6 @@ export default function Calculator({
   ) => void;
 }) {
   const [t] = useTranslation("common");
-  const theme = useTheme();
   const gameResultOptions = [
     { label: t("win") as string, value: 1 },
     { label: t("draw") as string, value: 0.5 },
@@ -51,8 +49,9 @@ export default function Calculator({
       k_value: kValue,
       y_r: player1Rating,
       res: gameResultOptions[0].value,
+      o_r: 0,
     },
-    onSubmit: (valuese: CalculatorSchemeType) => {
+    onSubmit: () => {
       const calculationResult = calculateRating(values);
       onCalculate({ ...calculationResult, ...values });
     },
@@ -68,7 +67,8 @@ export default function Calculator({
           type="number"
           placeholder={t("your_rating") as string}
           name="y_r"
-          value={values.y_r}
+          label={t("your_rating") as string}
+          value={String(values.y_r)}
           error={errors.y_r}
           handleChange={handleChange}
         />
@@ -80,7 +80,7 @@ export default function Calculator({
         label={t("opponent_rating") as string}
         name="o_r"
         handleChange={handleChange}
-        value={values.o_r}
+        value={String(values.o_r)}
         error={errors.o_r}
       />
       <View style={styles.formGroup}>
@@ -88,7 +88,7 @@ export default function Calculator({
           options={gameResultOptions}
           name="res"
           onChange={handleChange}
-          value={values.res}
+          value={String(values.res)}
         />
       </View>
       {!isTournamentScreen && (

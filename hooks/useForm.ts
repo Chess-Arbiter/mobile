@@ -7,9 +7,9 @@ export default function useForm<Z, Values>({
   onSubmit,
   getValidationScheme,
 }: {
-  initialValues: any;
+  initialValues: Values;
   onSubmit: any;
-  getValidationScheme: Z;
+  getValidationScheme: any;
 }): {
   handleChange: InputChangeHandler;
   values: Values;
@@ -51,5 +51,6 @@ export default function useForm<Z, Values>({
     values: formState,
     handleSubmit,
     errors,
+
   };
 }
