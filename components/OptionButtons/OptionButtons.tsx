@@ -17,7 +17,7 @@ export default function OptionButtons({
     <SegmentedButtons
       value={value}
       onValueChange={handleChange}
-      buttons={options}
+      buttons={options as any}
       {...props}
     />
   );
