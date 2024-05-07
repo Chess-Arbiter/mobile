@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import HandbookScreen from "../screens/HandbookScreen/HandbookScreen";
 import TournamentsScreen from "../screens/TournamentsScreen/TournamentsScreen";
-import TournamentScreen from "../screens/TournamentScreen/TournamentStreen";
+import TournamentScreen from "../screens/TournamentScreen/TournamentScreen";
 import { RootTabParamList } from "../types";
 import TabBarIcon from "../components/TabIcon/TabIcon";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
