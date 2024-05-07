@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, View } from "react-native";
+import { ColorValue, Modal, View } from "react-native";
 import { Divider, List, useTheme } from "react-native-paper";
 import { useTranslation } from "react-i18next";
 import { LANGUAGES } from "../../data/constants";
@@ -12,7 +12,7 @@ export default function SelectLanguage({
   open,
 }: SelectLanguageProps) {
   const [t, i18n] = useTranslation("common");
-  const theme = useTheme();
+  const theme = useTheme<{ colors: { info: ColorValue } }>();
   function handlePress(language: ELANGUAGES) {
     setTimeout(() => {
       i18n.changeLanguage(language);
