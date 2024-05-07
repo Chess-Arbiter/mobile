@@ -1,13 +1,10 @@
 import React from "react";
-import { FontAwesome } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Pressable } from "react-native";
 
-import Colors from "../constants/Colors";
 import HandbookScreen from "../screens/HandbookScreen/HandbookScreen";
 import TournamentsScreen from "../screens/TournamentsScreen/TournamentsScreen";
 import TournamentScreen from "../screens/TournamentScreen/TournamentStreen";
-import { RootTabParamList, RootTabScreenProps } from "../types";
+import { RootTabParamList } from "../types";
 import TabBarIcon from "../components/TabIcon/TabIcon";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CalculatorScreen from "../screens/CalculatorScreen/CalculatorScreen";
