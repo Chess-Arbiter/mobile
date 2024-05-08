@@ -10,12 +10,7 @@ import {
   ITournament,
 } from "../../models/tournaments";
 import useQuery from "../../hooks/useQuery";
-import {
-  createGame,
-  deleteGame,
-  getGames,
-  searchTournament,
-} from "../../data/api";
+import { createGame, deleteGame, getGames } from "../../data/api";
 import { CalculatorSchemeType } from "../../util/validators";
 import { ID } from "../../models/global";
 import { formatFloatNumber } from "../../util/helpers";
@@ -40,7 +35,7 @@ export default function TournamentScreen({ route }: any) {
     }
 
     const result = games.docs.reduce(
-      (res: any, { change }: { change: any }) => res + change,
+      (res: number, { change }: { change: number }) => res + change,
       0
     );
 
