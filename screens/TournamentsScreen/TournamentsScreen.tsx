@@ -35,7 +35,9 @@ export default function TournamentsScreen({ navigation }: any) {
     await deleteTournament(activeTournamentId);
     setData((prev: any) => ({
       ...prev,
-      docs: prev.docs?.filter(({ id }: any) => id !== activeTournamentId),
+      docs: prev.docs?.filter(
+        ({ id }: { id: ID }) => id !== activeTournamentId
+      ),
     }));
     setActiveTournamentId("");
     setIsDeleteConfirmVisible(false);

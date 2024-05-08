@@ -22,7 +22,7 @@ export default function useForm<Z, Values>({
 
   function handleChange(name: string, value: FormValue) {
     setErrors({});
-    setFormState((prev: any) => ({ ...prev, [name]: value }));
+    setFormState((prev: Values) => ({ ...prev, [name]: value }));
   }
 
   async function handleSubmit() {
@@ -32,9 +32,13 @@ export default function useForm<Z, Values>({
       const formatted: any = data.error.format();
 
       const newErrors = Object.keys(formatted).reduce(
-        (res: any, current: string) => {
+        (res: { [key: string]: string }, current: string) => {
           const currentError = formatted[current]?._errors?.[0];
-          if (!currentError) return res;
+
+          if (!currentError) {
+            return res;
+          }
+
           res[current] = currentError;
 
           return res;
