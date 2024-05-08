@@ -9,7 +9,7 @@ export default function useForm<Z, Values>({
 }: {
   initialValues: Values;
   onSubmit: Function;
-  getValidationScheme: any;
+  getValidationScheme: Function;
 }): {
   handleChange: InputChangeHandler;
   values: Values;
@@ -29,7 +29,7 @@ export default function useForm<Z, Values>({
     const data = validationScheme.safeParse(formState);
 
     if (!data.success) {
-      const formatted: any = data.error.format();
+      const formatted = data.error.format();
 
       const newErrors = Object.keys(formatted).reduce(
         (res: { [key: string]: string }, current: string) => {
