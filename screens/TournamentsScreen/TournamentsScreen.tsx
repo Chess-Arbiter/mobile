@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import useQuery from "../../hooks/useQuery";
 import { deleteTournament, searchTournament } from "../../data/api";
 import DeleteConfirm from "./components/DeleteConfirm/DeleteConfirm";
@@ -7,14 +7,16 @@ import { SelectQueryResult } from "../../util/sql";
 import { ID } from "../../models/global";
 import { useFocusEffect } from "@react-navigation/native";
 import { ITournament } from "../../models/tournaments";
+import { IProps } from "./TournamentScreen.types";
 
-export default function TournamentsScreen({ navigation }: any) {
+export default function TournamentsScreen({ navigation }: IProps) {
   const [search, setSearch] = useState("");
   const [activeTournamentId, setActiveTournamentId] = useState<ID>("");
   const [isDeleteConfirmVisible, setIsDeleteConfirmVisible] = useState(false);
   const fetchTournaments = useCallback(() => {
     return searchTournament(search);
   }, [search]);
+
   const { data, setData, isLoading, error, refetch } =
     useQuery<SelectQueryResult>(fetchTournaments);
 
