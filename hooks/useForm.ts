@@ -8,7 +8,7 @@ export default function useForm<Z, Values>({
   getValidationScheme,
 }: {
   initialValues: Values;
-  onSubmit: any;
+  onSubmit: Function;
   getValidationScheme: any;
 }): {
   handleChange: InputChangeHandler;
