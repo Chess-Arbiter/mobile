@@ -9,17 +9,19 @@ import { getCreateTournamentScheme } from "../../util/validators";
 import { useTranslation } from "react-i18next";
 import { createTournament } from "../../data/api";
 import PrimaryButton from "../../components/buttons/PrimaryButton";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { ParamListBase } from "@react-navigation/native";
 
 const KValues = [10, 15, 20, 30, 40].map((value) => ({
   value,
   label: String(value),
 }));
 
-export default function CreateTournamentScreen({
-  navigation,
-}: {
-  navigation: any;
-}) {
+interface IProps {
+  navigation: NativeStackNavigationProp<ParamListBase>;
+}
+
+export default function CreateTournamentScreen({ navigation }: IProps) {
   const [t] = useTranslation("common");
   const { handleChange, values, handleSubmit, errors } = useForm<any, any>({
     initialValues: { k_value: KValues[0].value },
