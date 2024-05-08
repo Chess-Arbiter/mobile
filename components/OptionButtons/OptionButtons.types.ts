@@ -9,5 +9,5 @@ export type OptionButtonProps = {
   value: string;
   onChange: InputChangeHandler;
   name: string;
-  style?: any;
+  style?: { [key: string]: string | number };
 };
