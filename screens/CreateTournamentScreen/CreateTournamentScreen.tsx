@@ -23,7 +23,11 @@ export default function CreateTournamentScreen({
   const [t] = useTranslation("common");
   const { handleChange, values, handleSubmit, errors } = useForm<any, any>({
     initialValues: { k_value: KValues[0].value },
-    onSubmit: async (values: any) => {
+    onSubmit: async (values: {
+      name: string;
+      rating: number;
+      k_value: number;
+    }) => {
       await createTournament(values);
 
       navigation.navigate("Tournaments", values);
