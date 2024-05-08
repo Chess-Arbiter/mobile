@@ -12,7 +12,7 @@ export default function SettingsScreen() {
   const { settings, changeSettings, colorScheme } = useAppContext();
 
   function handleChange(name: string, value: FormValue) {
-    changeSettings(name, value);
+    changeSettings(name, value as string);
   }
   function handleToggleTheme() {
     handleChange("theme", settings.theme === "dark" ? "light" : "dark");

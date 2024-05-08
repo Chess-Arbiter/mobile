@@ -7,9 +7,9 @@ export default function useForm<Z, Values>({
   onSubmit,
   getValidationScheme,
 }: {
-  initialValues: any;
-  onSubmit: any;
-  getValidationScheme: Z;
+  initialValues: Values;
+  onSubmit: Function;
+  getValidationScheme: Function;
 }): {
   handleChange: InputChangeHandler;
   values: Values;
@@ -22,19 +22,23 @@ export default function useForm<Z, Values>({
 
   function handleChange(name: string, value: FormValue) {
     setErrors({});
-    setFormState((prev: any) => ({ ...prev, [name]: value }));
+    setFormState((prev: Values) => ({ ...prev, [name]: value }));
   }
 
   async function handleSubmit() {
     const data = validationScheme.safeParse(formState);
 
     if (!data.success) {
-      const formatted: any = data.error.format();
+      const formatted = data.error.format();
 
       const newErrors = Object.keys(formatted).reduce(
-        (res: any, current: string) => {
+        (res: { [key: string]: string }, current: string) => {
           const currentError = formatted[current]?._errors?.[0];
-          if (!currentError) return res;
+
+          if (!currentError) {
+            return res;
+          }
+
           res[current] = currentError;
 
           return res;

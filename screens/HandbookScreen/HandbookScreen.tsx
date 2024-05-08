@@ -18,7 +18,7 @@ export default function TabOneScreen() {
   const [t] = useTranslation("common");
   const { currentUrl, onNavigationStateChange, onError } = useAppContext();
 
-  const pageRef = useRef();
+  const pageRef = useRef<any>();
   useFocusEffect(
     React.useCallback(() => {
       const onBackPress = () => {

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import * as Network from "expo-network";
 
 import useSettings from "./useSettings";
-import { loadAds } from "../util/ads";
 
 const useInitApp = () => {
   const [isInProgress, setIsInProgress] = useState(true);
@@ -21,7 +20,7 @@ const useInitApp = () => {
     }
     (async () => {
       try {
-        await Promise.all([detectConnection(), loadAds()]);
+        await Promise.all([detectConnection()]);
       } catch {
         setHasError(true);
       } finally {

@@ -4,13 +4,18 @@ export function setURLSearchParam(
   value: string
 ) {
   const [url, search] = currentUrl.split("?");
+
   if (!search) {
     return `${url}?${name}=${value}`;
   }
+
   let newSearch = `?${name}=${value}`;
 
   for (const query of search.split("&")) {
-    if (query.startsWith(name)) continue;
+    if (query.startsWith(name)) {
+      continue;
+    }
+    
     newSearch += `&${query}`;
   }
 

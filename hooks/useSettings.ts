@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getSettings } from "../data/api";
 import initDb from "../data/initDb";
 import { updateOrCreateSetting } from "../data/api";
@@ -6,11 +6,15 @@ import { APP_BASE_URL } from "../data/constants";
 import { ELANGUAGES } from "../models/global";
 import { useTranslation } from "react-i18next";
 import { setURLSearchParam } from "../util/url";
+import { ColorSchemeName } from "react-native";
 
 export default function useInitApp() {
   const [initInProgress, setInitInProgress] = useState<boolean>(true);
-  const [t, i18n] = useTranslation();
-  const [settings, setSettings] = useState({});
+  const [, i18n] = useTranslation();
+  const [settings, setSettings] = useState({
+    lang: ELANGUAGES.EN,
+    theme: "light" as ColorSchemeName,
+  });
   const [currentUrl, setCurrentUrl] = useState("");
   const [error, setError] = useState(false);
 

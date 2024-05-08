@@ -12,12 +12,11 @@ export default function OptionButtons({
   function handleChange(newValue: string) {
     onChange(name, newValue);
   }
-
   return (
     <SegmentedButtons
       value={value}
       onValueChange={handleChange}
-      buttons={options}
+      buttons={options as any}
       {...props}
     />
   );

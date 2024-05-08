@@ -1,8 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { Button, HelperText } from "react-native-paper";
-import { z } from "zod";
-
+import { HelperText } from "react-native-paper";
 import styles from "./CreateTournament.styles";
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
@@ -11,20 +9,27 @@ import { getCreateTournamentScheme } from "../../util/validators";
 import { useTranslation } from "react-i18next";
 import { createTournament } from "../../data/api";
 import PrimaryButton from "../../components/buttons/PrimaryButton";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { ParamListBase } from "@react-navigation/native";
 
 const KValues = [10, 15, 20, 30, 40].map((value) => ({
   value,
   label: String(value),
 }));
 
-export default function CreateTournamentScreen({ navigation }) {
+interface IProps {
+  navigation: NativeStackNavigationProp<ParamListBase>;
+}
+
+export default function CreateTournamentScreen({ navigation }: IProps) {
   const [t] = useTranslation("common");
-  const { handleChange, values, handleSubmit, errors } = useForm<
-    typeof getCreateTournamentScheme,
-    z.infer<typeof getCreateTournamentScheme>
-  >({
+  const { handleChange, values, handleSubmit, errors } = useForm<any, any>({
     initialValues: { k_value: KValues[0].value },
-    onSubmit: async (values: any) => {
+    onSubmit: async (values: {
+      name: string;
+      rating: number;
+      k_value: number;
+    }) => {
       await createTournament(values);
 
       navigation.navigate("Tournaments", values);
@@ -32,12 +37,15 @@ export default function CreateTournamentScreen({ navigation }) {
     getValidationScheme: getCreateTournamentScheme,
   });
 
+  const tournamentName = t("tournament_name");
+  const yourRating = t("your_rating");
+
   return (
     <View style={styles.container}>
       <Input
         style={styles.formGroup}
         name="name"
-        label={t("tournament_name")}
+        label={tournamentName}
         value={values.name}
         handleChange={handleChange}
         error={errors.name}
@@ -46,7 +54,7 @@ export default function CreateTournamentScreen({ navigation }) {
         style={styles.formGroup}
         keyboardType="numeric"
         type="number"
-        label={t("your_rating")}
+        label={yourRating}
         name="rating"
         handleChange={handleChange}
         value={values.rating}

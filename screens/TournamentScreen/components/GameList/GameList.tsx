@@ -5,12 +5,12 @@ import { ID } from "../../../../models/global";
 import { IGame } from "../../../../models/tournaments";
 import { formatFloatNumber } from "../../../../util/helpers";
 
-function getResultIcon(raitingChange: number): string {
-  if (raitingChange > 0) {
+function getResultIcon(ratingChange: number): string {
+  if (ratingChange > 0) {
     return "plus";
   }
 
-  if (raitingChange === 0) {
+  if (ratingChange === 0) {
     return "handshake-outline";
   }
 
@@ -54,7 +54,7 @@ export default function GameList({
       {games.map((game: IGame) => (
         <List.Item
           key={game.id}
-          title={`${t("oponent_rating")}: ${game.oponent_rating}`}
+          title={`${t("opponent_rating")}: ${game.opponent_rating}`}
           description={`${t("rating_change")}: ${formatFloatNumber(
             game.change
           )}`}

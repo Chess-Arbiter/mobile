@@ -1,10 +1,10 @@
 import { z } from "zod";
 
-function translate(key: string, t: any): string {
+function translate(key: string, t: Function): string {
   return t(key, { ns: "errors" }) as string;
 }
 
-export function getCreateTournamentScheme(t: any) {
+export function getCreateTournamentScheme(t: Function) {
   return z.object({
     name: z.string().min(1, translate("required", t)),
     rating: z.number().min(1, translate("required", t)),
@@ -12,7 +12,7 @@ export function getCreateTournamentScheme(t: any) {
   });
 }
 
-export function getCalculatorScheme(t: any) {
+export function getCalculatorScheme(t: Function) {
   return z.object({
     y_r: z.number().min(1, translate("required", t)),
     o_r: z.number().min(1, translate("required", t)),

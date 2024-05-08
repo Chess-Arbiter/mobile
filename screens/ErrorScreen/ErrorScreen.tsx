@@ -5,7 +5,9 @@ import { IconButton, Text, useTheme } from "react-native-paper";
 
 export default function ErrorScreen() {
   const [t] = useTranslation("common");
-  const theme = useTheme();
+  const theme = useTheme<{
+    colors: { info: string; error: string; primary: string };
+  }>();
   return (
     <View
       style={{

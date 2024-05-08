@@ -11,7 +11,7 @@ export default function Input({
 }: TextInputProps & {
   name: string;
   handleChange: InputChangeHandler;
-  type: "text" | "number";
+  type?: "text" | "number";
 }) {
   return (
     <>
