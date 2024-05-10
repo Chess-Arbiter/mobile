@@ -29,7 +29,7 @@ export default function TournamentsScreenView({
     <View style={styles.wrapper}>
       {!isEmptyState && (
         <Searchbar
-          placeholder="Search"
+          placeholder={t("search") as string}
           onChangeText={setSearch}
           value={search}
         />
