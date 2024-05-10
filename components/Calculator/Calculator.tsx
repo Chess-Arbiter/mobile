@@ -88,7 +88,7 @@ export default function Calculator({
           options={gameResultOptions}
           name="res"
           onChange={handleChange}
-          value={String(values.res)}
+          value={values.res}
         />
       </View>
       {!isTournamentScreen && (
