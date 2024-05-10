@@ -3,7 +3,6 @@ import useQuery from "../../hooks/useQuery";
 import { deleteTournament, searchTournament } from "../../data/api";
 import DeleteConfirm from "./components/DeleteConfirm/DeleteConfirm";
 import TournamentsScreenView from "./TournamentScreenView";
-import { SelectQueryResult } from "../../util/sql";
 import { ID } from "../../models/global";
 import { useFocusEffect } from "@react-navigation/native";
 import { ITournament } from "../../models/tournaments";
@@ -18,7 +17,7 @@ export default function TournamentsScreen({ navigation }: IProps) {
   }, [search]);
 
   const { data, setData, isLoading, error, refetch } =
-    useQuery<SelectQueryResult>(fetchTournaments);
+    useQuery<any>(fetchTournaments);
 
   function onTournamentPress(tournament: ITournament) {
     navigation.navigate("Tournament", { tournament, name: tournament.name });

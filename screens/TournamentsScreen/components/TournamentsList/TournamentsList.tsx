@@ -5,7 +5,7 @@ import { ID } from "../../../../models/global";
 import { ITournament } from "../../../../models/tournaments";
 
 interface ITournamentsListProps {
-  tournaments: any;
+  tournaments: ITournament[];
   onTournamentPress: (tournament: ITournament) => void;
   onDeleteStart: (tournamentId: ID) => void;
 }
@@ -22,7 +22,7 @@ export default function TournamentsList({
           <List.Item
             onPress={() => onTournamentPress(tournament)}
             title={tournament.name}
-            left={(props) => (
+            left={() => (
               <IconButton
                 icon="delete"
                 onPress={() => onDeleteStart(tournament.id)}

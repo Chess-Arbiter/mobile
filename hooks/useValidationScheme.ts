@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 
-export default function useValidationScheme(getScheme: any) {
+export default function useValidationScheme(getScheme: Function) {
   const scheme = useRef();
   const [t] = useTranslation();
   if (!scheme.current) {

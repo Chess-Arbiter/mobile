@@ -1,13 +1,9 @@
 import { SQLResultSet } from "expo-sqlite";
+import { ITournament } from "../models/tournaments";
 
-export type SelectQueryResult = {
-  docs: any;
-};
+export default function formatSelectQueryResult(query: SQLResultSet) {
+  let docs: ITournament[] = [];
 
-export default function formatSelectQueryResult(
-  query: SQLResultSet
-): SelectQueryResult {
-  let docs: any = [];
   if (query.rows?._array) {
     docs = query.rows?._array;
   }

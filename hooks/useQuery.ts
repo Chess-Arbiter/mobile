@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
+import { ITournament } from "../models/tournaments";
 
 type useQueryResult<T> = {
   error: string;
   isLoading: boolean;
-  data: any;
+  data: { docs: ITournament[] };
   refetch: () => void;
-  setData: any;
+  setData: Function;
 };
 
-export default function useQuery<T>(runQuery: any): useQueryResult<T[]> {
-  const [data, setData] = useState<T[]>();
+export default function useQuery<T>(runQuery: Function): useQueryResult<T[]> {
+  const [data, setData] = useState<{ docs: ITournament[] }>();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -17,7 +18,7 @@ export default function useQuery<T>(runQuery: any): useQueryResult<T[]> {
     try {
       setError("");
       setIsLoading(true);
-      const res = await runQuery();
+      const res: { docs: ITournament[] } = await runQuery();
 
       setData(res);
     } catch (err: any) {
@@ -32,7 +33,7 @@ export default function useQuery<T>(runQuery: any): useQueryResult<T[]> {
   }, [fetchData]);
 
   return {
-    data,
+    data: data as { docs: ITournament[] },
     isLoading,
     error,
     refetch: fetchData,
