@@ -13,7 +13,7 @@ export default function useForm<Z, Values>({
 }): {
   handleChange: InputChangeHandler;
   values: Values;
-  errors: any;
+  errors: Object;
   handleSubmit: () => void;
 } {
   const [formState, setFormState] = useState(initialValues);
