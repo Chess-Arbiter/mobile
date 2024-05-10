@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView } from "react-native";
 import { Divider } from "react-native-paper";
 import Calculator from "../../components/Calculator/Calculator";
 import CalculatorResult from "../../components/CalculatorResult/CalculatorResult";
@@ -35,7 +35,7 @@ export default function TournamentScreen({ route }: any) {
     }
 
     const result = games.docs.reduce(
-      (res: number, { change }: { change: number }) => res + change,
+      (res, { change }: { change: number }) => res + change,
       0
     );
 

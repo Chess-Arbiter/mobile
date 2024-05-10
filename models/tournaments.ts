@@ -3,6 +3,7 @@ export interface ITournament {
   name: string;
   rating: number;
   k_value: number;
+  change?: number;
 }
 
 export interface IGame {
