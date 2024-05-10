@@ -3,7 +3,10 @@ import { ID } from "../models/global.js";
 import formatSelectQueryResult from "../util/sql";
 import db from "./db";
 
-function runQuery(query: string, params: any = []): Promise<SQLResultSet> {
+function runQuery(
+  query: string,
+  params: (string | number)[] = []
+): Promise<SQLResultSet> {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
