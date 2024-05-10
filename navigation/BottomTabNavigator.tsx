@@ -8,7 +8,6 @@ import { RootTabParamList } from "../types";
 import TabBarIcon from "../components/TabIcon/TabIcon";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CalculatorScreen from "../screens/CalculatorScreen/CalculatorScreen";
-import { useTranslation } from "react-i18next";
 import SettingsScreen from "../screens/SettingsScreen/SettingsScreen";
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
@@ -34,15 +33,13 @@ function Tournaments() {
 }
 
 export default function BottomTabNavigator() {
-  const [t] = useTranslation("common");
-
   return (
     <BottomTab.Navigator initialRouteName="Handbook">
       <BottomTab.Screen
         name="Handbook"
         component={HandbookScreen}
         options={() => ({
-          title: t("rules") as string,
+          title: "",
           tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
         })}
       />
@@ -50,7 +47,7 @@ export default function BottomTabNavigator() {
         name="Tournaments"
         component={Tournaments}
         options={{
-          title: t("tournaments") as string,
+          title: "",
           tabBarIcon: ({ color }) => <TabBarIcon name="trophy" color={color} />,
         }}
       />
@@ -58,7 +55,7 @@ export default function BottomTabNavigator() {
         name="Calculator"
         component={CalculatorScreen}
         options={{
-          title: t("calculator") as string,
+          title: "",
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="calculator" color={color} />
           ),
@@ -68,7 +65,7 @@ export default function BottomTabNavigator() {
         name="Settings"
         component={SettingsScreen}
         options={{
-          title: t("settings") as string,
+          title: "",
           tabBarIcon: ({ color }) => <TabBarIcon name="cog" color={color} />,
         }}
       />
