@@ -5,7 +5,7 @@
     "version": "2.0.0",
     "sdkVersion": "47.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/splash.png",
+    "icon": "./assets/images/logo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
@@ -29,7 +29,6 @@
         "backgroundColor": "#ffffff"
       },
       "versionCode": 10,
-      "versionName": "2.0.0",
       "package": "com.chessarbiter"
     },
     "web": {
@@ -37,7 +36,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "c0a61e04-84fc-4253-b38c-d6b10ccaa017"
+        "projectId": "a740088c-fd26-43f6-bdc4-1407433d1837"
       }
     }
   }
