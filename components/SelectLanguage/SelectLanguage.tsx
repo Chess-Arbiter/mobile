@@ -14,9 +14,7 @@ export default function SelectLanguage({
   const [t, i18n] = useTranslation("common");
   const theme = useTheme<{ colors: { info: ColorValue } }>();
   function handlePress(language: ELANGUAGES) {
-    setTimeout(() => {
-      i18n.changeLanguage(language);
-    }, 1000);
+    i18n.changeLanguage(language);
     onSelect(language);
   }
   return (
