@@ -68,7 +68,7 @@ export default function useInitApp() {
             acc[setting] = value;
             return acc;
           },
-          {}
+          { lang: ELANGUAGES.EN }
         );
         setCurrentUrl(
           `${APP_BASE_URL}${settingsResult.lang}/laws/article1?mobile=true&theme=${settingsResult.theme}`
