@@ -67,7 +67,7 @@ export default function CreateTournamentScreen({ navigation }: IProps) {
           name="k_value"
           value={values.k_value}
         />
-        <HelperText type="info" visible>
+        <HelperText type="info" visible style={styles.kValue}>
           {t("k_description")}
         </HelperText>
       </View>

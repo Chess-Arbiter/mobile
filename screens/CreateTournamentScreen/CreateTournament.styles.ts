@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
   submitButton: {
     marginTop: 40,
   },
+  kValue: {
+    fontSize: 20,
+  },
 });
 
 export default styles;

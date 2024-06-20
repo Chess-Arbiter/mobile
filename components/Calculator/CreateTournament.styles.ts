@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
     marginTop: 40,
     color: "#fff",
   },
+  kValue: {
+    fontSize: 20,
+  },
 });
 
 export default styles;
