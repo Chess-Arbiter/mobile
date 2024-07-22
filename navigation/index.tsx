@@ -10,7 +10,7 @@ export default function Navigation({
   colorScheme: ColorSchemeName;
 }) {
   return (
-    <NavigationContainer
+    <NavigationContainer independent={true}
       theme={colorScheme === "dark" ? CombinedDarkTheme : CombinedDefaultTheme}
     >
       <RootNavigator />
