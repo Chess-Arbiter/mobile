@@ -3,19 +3,19 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { I18nextProvider } from "react-i18next";
 
-import useCachedResources from "./hooks/useCachedResources";
-import useColorScheme from "./hooks/useColorScheme";
-import Navigation from "./navigation";
+import useCachedResources from "../hooks/useCachedResources";
+import useColorScheme from "../hooks/useColorScheme";
+import Navigation from "../navigation";
 import { Provider as PaperProvider } from "react-native-paper";
-import useInitApp from "./hooks/useInitApp";
-import i18 from "./util/i18";
-import AppProvider from "./context/AppContext";
-import SelectLanguage from "./components/SelectLanguage/SelectLanguage";
-import { ELANGUAGES } from "./models/global";
-import useDetectLanguage from "./hooks/useDetectLanguage";
-import { CombinedDarkTheme, CombinedDefaultTheme } from "./theme/theme";
-import ErrorScreen from "./screens/ErrorScreen/ErrorScreen";
-import { LANGUAGES } from "./data/constants";
+import useInitApp from "../hooks/useInitApp";
+import i18 from "../util/i18";
+import AppProvider from "../context/AppContext";
+import SelectLanguage from "../components/SelectLanguage/SelectLanguage";
+import { ELANGUAGES } from "../models/global";
+import useDetectLanguage from "../hooks/useDetectLanguage";
+import { CombinedDarkTheme, CombinedDefaultTheme } from "../theme/theme";
+import ErrorScreen from "../screens/ErrorScreen/ErrorScreen";
+import { LANGUAGES } from "../data/constants";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();

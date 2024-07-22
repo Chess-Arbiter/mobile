@@ -1,4 +1,4 @@
-import { openDatabase, WebSQLDatabase } from "expo-sqlite";
+import { openDatabase, WebSQLDatabase } from "expo-sqlite/legacy"; // TODO import from expo-sqlite
 
 const db: WebSQLDatabase = openDatabase("chess_arbiter_db");
 
