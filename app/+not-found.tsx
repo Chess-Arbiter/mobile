@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Text } from "react-native-paper";
 
-import { RootStackScreenProps } from "../../types";
+import { RootStackScreenProps } from "../types";
 
 export default function NotFoundScreen({
   navigation,
