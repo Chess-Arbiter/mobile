@@ -1,4 +1,4 @@
-import { SQLResultSet } from "expo-sqlite";
+import { SQLResultSet } from "expo-sqlite/legacy"; // TODO import from expo-sqlite
 import { ID } from "../models/global.js";
 import formatSelectQueryResult from "../util/sql";
 import db from "./db";

@@ -1,4 +1,4 @@
-import { SQLResultSet } from "expo-sqlite";
+import { SQLResultSet } from "expo-sqlite/legacy";
 import { ITournament } from "../models/tournaments";
 
 export default function formatSelectQueryResult(query: SQLResultSet) {

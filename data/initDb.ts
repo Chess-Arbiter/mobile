@@ -1,4 +1,4 @@
-import { SQLError, SQLTransaction } from "expo-sqlite";
+import { SQLError, SQLTransaction } from "expo-sqlite/legacy"; // TODO import from expo-sqlite
 import db from "./db";
 const initDb = () => {
   return new Promise((resolve, reject) => {
