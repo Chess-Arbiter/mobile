@@ -26,7 +26,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "versionCode": 13,
+      "versionCode": 15,
       "package": "com.chess_arbiter.chessarbitermobile"
     },
     "web": {
