@@ -3,7 +3,7 @@
     "name": "Chess Arbiter",
     "slug": "chess-arbiter-mobile",
     "version": "3.0.0",
-    "sdkVersion": "48.0.0",
+    "sdkVersion": "51.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
     "scheme": "myapp",
@@ -30,13 +30,14 @@
       "package": "com.chess_arbiter.chessarbitermobile"
     },
     "web": {
+      "bundler": "metro",
+      "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
     "extra": {
       "eas": {
         "projectId": "a740088c-fd26-43f6-bdc4-1407433d1837"
       }
-    },
-    "plugins": ["expo-dev-client"]
+    }
   }
 }
