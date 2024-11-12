@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import { IconButton, Text, useTheme } from "react-native-paper";
+import { CONTACT_EMAIL } from "../../data/constants";
 
 export default function ErrorScreen() {
   const [t] = useTranslation("common");
@@ -40,7 +41,7 @@ export default function ErrorScreen() {
           color: theme.colors.primary,
         }}
       >
-        cbessarbiter.info@gmail.com
+        {CONTACT_EMAIL}
       </Text>
     </View>
   );
