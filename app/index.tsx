@@ -36,7 +36,7 @@ const MyWebView = () => {
 
   return (
     <WebView
-      style={{ marginTop: 40 }}
+      style={{ flex: 1, marginTop: 40 }}
       source={{ uri: url }}
       onNavigationStateChange={handleNavigationStateChange}
     />
