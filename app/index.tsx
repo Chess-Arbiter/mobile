@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, ActivityIndicator } from "react-native";
+import { ActivityIndicator } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { WebView } from "react-native-webview";
 
@@ -17,8 +17,6 @@ const MyWebView = () => {
         if (lastUrl) {
           setUrl(lastUrl);
         }
-      } catch (error) {
-        console.error("Failed to load last URL:", error);
       } finally {
         setLoading(false);
       }
@@ -26,13 +24,10 @@ const MyWebView = () => {
     loadLastUrl();
   }, []);
 
-  // Save the last URL when navigation changes
   const handleNavigationStateChange = async (navState: any) => {
     try {
       await AsyncStorage.setItem(LAST_URL_KEY, navState.url);
-    } catch (error) {
-      console.error("Failed to save URL:", error);
-    }
+    } catch (error) {}
   };
 
   if (loading) {
