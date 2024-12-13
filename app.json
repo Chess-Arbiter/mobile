@@ -2,12 +2,13 @@
   "expo": {
     "name": "Chess Arbiter",
     "slug": "chess-arbiter-mobile",
-    "version": "3.0.1",
-    "sdkVersion": "51.0.0",
+    "version": "4.1.0",
+    "sdkVersion": "52.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -26,7 +27,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "versionCode": 16,
+      "versionCode": 17,
       "package": "com.chess_arbiter.chessarbitermobile"
     },
     "web": {
