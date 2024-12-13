@@ -1,43 +1,41 @@
 {
   "expo": {
-    "name": "Chess Arbiter",
-    "slug": "chess-arbiter-mobile",
-    "version": "3.0.1",
-    "sdkVersion": "51.0.0",
+    "name": "new-mobile",
+    "slug": "new-mobile",
+    "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/logo.png",
+    "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": ["**/*"],
+    "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.chess_arbiter.chessarbitermobile"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "versionCode": 16,
-      "package": "com.chess_arbiter.chessarbitermobile"
+      }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    "extra": {
-      "eas": {
-        "projectId": "a740088c-fd26-43f6-bdc4-1407433d1837"
-      }
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }
