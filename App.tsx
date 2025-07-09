@@ -4,9 +4,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { WebView } from "react-native-webview";
 
 const LAST_URL_KEY = "lastVisitedUrl";
+const defaultUrl = "https://chessarbiter.info/en/laws/intro";
 
 const MyWebView = () => {
-  const defaultUrl = "https://chessarbiter.info/en/laws/intro";
   const [url, setUrl] = useState(defaultUrl);
   const [loading, setLoading] = useState(true);
 
