@@ -2,8 +2,8 @@
   "expo": {
     "name": "Chess Arbiter",
     "slug": "chess-arbiter-mobile",
-    "version": "4.4.0",
-    "sdkVersion": "53.0.0",
+    "version": "4.4.1",
+    "sdkVersion": "54.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
     "scheme": "myapp",
@@ -29,7 +29,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "versionCode": 23,
+      "versionCode": 24,
       "package": "com.chess_arbiter.chessarbitermobile",
       "permissions": [],
       "intentFilters": [
@@ -56,9 +56,6 @@
       "eas": {
         "projectId": "a740088c-fd26-43f6-bdc4-1407433d1837"
       }
-    },
-    "plugins": [
-      "expo-router"
-    ]
+    }
   }
 }
