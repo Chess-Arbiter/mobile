@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, BackHandler } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { WebView } from "react-native-webview";
 
@@ -9,6 +9,8 @@ const defaultUrl = "https://chessarbiter.info/en/laws/intro";
 const MyWebView = () => {
   const [url, setUrl] = useState(defaultUrl);
   const [loading, setLoading] = useState(true);
+  const [canGoBack, setCanGoBack] = useState(false);
+  const webviewRef = React.useRef<any>(null);
 
   useEffect(() => {
     const loadLastUrl = async () => {
@@ -24,10 +26,29 @@ const MyWebView = () => {
     loadLastUrl();
   }, []);
 
+  useEffect(() => {
+    const onBackPress = () => {
+      if (canGoBack && webviewRef.current) {
+        webviewRef.current.goBack();
+        return true;
+      }
+      return false;
+    };
+
+    const subscription = BackHandler.addEventListener(
+      "hardwareBackPress",
+      onBackPress
+    );
+    return () => {
+      subscription.remove();
+    };
+  }, [canGoBack]);
+
   const handleNavigationStateChange = async (navState: any) => {
+    setCanGoBack(navState.canGoBack);
     try {
       await AsyncStorage.setItem(LAST_URL_KEY, navState.url);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   if (loading) {
@@ -36,6 +57,7 @@ const MyWebView = () => {
 
   return (
     <WebView
+      ref={webviewRef}
       style={{ flex: 1, marginTop: 40 }}
       source={{ uri: url }}
       onNavigationStateChange={handleNavigationStateChange}
