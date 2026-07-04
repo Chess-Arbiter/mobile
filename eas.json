@@ -8,6 +8,13 @@
     "preview": {
       "distribution": "internal"
     },
-    "production": {}
+    "production": {
+      "android": {
+        "autoIncrement": true
+      }
+    }
+  },
+  "cli": {
+    "appVersionSource": "remote"
   }
 }
