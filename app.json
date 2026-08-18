@@ -15,7 +15,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-status-bar"
     ],
     "updates": {
       "fallbackToCacheTimeout": 0
